@@ -22,7 +22,6 @@ function App () {
 		{id: v1(), title: "Redux", isDone: false},
 		{id: v1(), title: "GraphQL", isDone: false},
 	]
-
 	const [tasks, setTasks] = useState<Array<TaskType>>(initTasks)
 
 	//Add task
@@ -30,39 +29,48 @@ function App () {
 		const task = {
 			id: v1(),
 			title: taskTitle,
-			isDone: false
+			isDone: false,
 		}
 		const newTasks = [task, ...tasks]
-		setTasks(newTasks);
+		setTasks(newTasks)
 	}
 
 	//Remove task
 	const removeTask = (taskId: string) => {
 		const newTasks = tasks.filter(t => t.id !== taskId)
-		setTasks(newTasks);
+		setTasks(newTasks)
 	}
 
 	//Changing task's filter
 	const [filter, setFilter] = useState<FilterValuesType>("all")
-
 	let filteredTasks = tasks
 	if (filter === "active") {
 		filteredTasks = tasks.filter(t => !t.isDone)
 	} else if (filter === "completed") {
 		filteredTasks = tasks.filter(t => t.isDone)
 	}
-
 	const changeFilter = (filterValue: FilterValuesType) => {
 		setFilter(filterValue)
 	}
 
+	//Changing task's status
+	const changeStatus = (taskId: string, status: boolean) => {
+		const task = tasks.find(t => t.id === taskId)
+		if (task) {
+			task.isDone = status
+			setTasks([...tasks])
+		}
+	}
+
 	return (
 		<div className="App">
-            <TodoList title="What to learn"
+			<TodoList title="What to learn"
 					  tasks={filteredTasks}
+					  filter={filter}
 					  removeTask={removeTask}
 					  changeFilter={changeFilter}
-					  addTask={addTask}/>
+					  addTask={addTask}
+					  changeTaskStatus={changeStatus}/>
 		</div>
 	)
 }
