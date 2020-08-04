@@ -1,11 +1,11 @@
 import React, {useState} from "react"
 import {v1} from "uuid"
+import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core"
+import {Menu} from "@material-ui/icons"
 
 import "./App.css"
 import {TodoList} from "./TodoList"
 import AddItemForm from "./AddItemForm"
-import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core"
-import {Menu} from "@material-ui/icons"
 
 export type FilterValuesType = "all" | "active" | "completed"
 
@@ -15,7 +15,7 @@ export type TaskType = {
 	isDone: boolean
 }
 
-type TodoListType = {
+export type TodoListType = {
 	id: string
 	title: string
 	filter: FilterValuesType
@@ -78,7 +78,7 @@ function App () {
 	}
 
 	//Change todoList's filter
-	const changeFilter = (todoListId: string, filterValue: FilterValuesType) => {
+	const changeTodoListFilter = (todoListId: string, filterValue: FilterValuesType) => {
 		const todoList = todoLists.find(tl => tl.id === todoListId)
 		if (todoList) {
 			todoList.filter = filterValue
@@ -164,7 +164,7 @@ function App () {
 											  filter={tl.filter}
 											  deleteTodoList={deleteTodoList}
 											  changeTodoListTitle={changeTodoListTitle}
-											  changeFilter={changeFilter}
+											  changeTodoListFilter={changeTodoListFilter}
 											  addTask={addTask}
 											  deleteTask={deleteTask}
 											  changeTaskTitle={changeTaskTitle}
