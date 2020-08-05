@@ -21,7 +21,7 @@ export type TodoListType = {
 	filter: FilterValuesType
 }
 
-type TasksStateType = {
+export type TasksStateType = {
 	[key: string]: Array<TaskType>
 }
 
@@ -116,7 +116,7 @@ function App () {
 	}
 
 	//Change task's status
-	const changeStatus = (todoListId: string, taskId: string, status: boolean) => {
+	const changeTaskStatus = (todoListId: string, taskId: string, status: boolean) => {
 		const currentTasks = tasks[todoListId]
 		const task = currentTasks.find(t => t.id === taskId)
 		if (task) {
@@ -168,7 +168,7 @@ function App () {
 											  addTask={addTask}
 											  deleteTask={deleteTask}
 											  changeTaskTitle={changeTaskTitle}
-											  changeTaskStatus={changeStatus}/>
+											  changeTaskStatus={changeTaskStatus}/>
 								</Paper>
 							</Grid>
 						})
