@@ -2,7 +2,7 @@ import React, {ChangeEvent} from "react"
 import {Button, Checkbox, IconButton} from "@material-ui/core"
 import {Delete} from "@material-ui/icons"
 
-import {FilterValuesType, TaskType} from "./App"
+import {FilterValuesType, TaskType} from "./AppWithRedux"
 import AddItemForm from "./AddItemForm"
 import EditableSpan from "./EditableSpan"
 
