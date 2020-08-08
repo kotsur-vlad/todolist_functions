@@ -5,7 +5,7 @@ import {Menu} from "@material-ui/icons"
 
 import "./App.css"
 import {TodoList} from "./TodoList"
-import AddItemForm from "./AddItemForm"
+import {AddItemForm} from "./AddItemForm"
 
 export type FilterValuesType = "all" | "active" | "completed"
 
